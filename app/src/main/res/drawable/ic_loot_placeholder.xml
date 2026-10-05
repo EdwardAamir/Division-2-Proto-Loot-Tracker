@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shown when ProtoTrack gives no icon for a target: a loot crate outline. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="#5A6575">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M12,2l9,4v12l-9,4l-9,-4L3,6L12,2zM12,4.3L5.5,7.1L12,9.9l6.5,-2.8L12,4.3zM5,8.6v8.2l6,2.7v-8.2L5,8.6zM13,11.3v8.2l6,-2.7V8.6L13,11.3z" />
+</vector>

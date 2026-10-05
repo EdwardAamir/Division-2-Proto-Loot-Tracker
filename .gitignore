@@ -1,0 +1,37 @@
+# ── Secrets ───────────────────────────────────────────────────────────
+# The release signing key and its passwords. Committing these would let
+# anyone build an "update" that Android accepts as this app. Never commit them.
+keystore.properties
+*.jks
+*.keystore
+
+# ── Local machine config ──────────────────────────────────────────────
+# Points at this machine's Android SDK and Gradle cache. Meaningless on
+# anyone else's computer, so it stays local and CI/the build regenerates it.
+local.properties
+.gradle/
+build-env.ps1
+
+# ── Build output ──────────────────────────────────────────────────────
+# ~113 MB of generated files that rebuild from source. Never useful in git.
+build/
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ── IDE ───────────────────────────────────────────────────────────────
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.DS_Store
+
+# ── Android / misc ────────────────────────────────────────────────────
+captures/
+.externalNativeBuild/
+*.apk
+*.aab
+*.ap_
+*.dex

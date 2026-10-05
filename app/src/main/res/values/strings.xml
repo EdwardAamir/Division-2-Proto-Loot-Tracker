@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Escalation Loot</string>
+    <string name="refresh">Refresh</string>
+    <string name="english">English</string>
+    <string name="chinese">中文</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="no_data">No Escalation data yet.</string>
+
+    <string name="escalation_target_loot">Escalation Target Loot</string>
+    <string name="data_from_prototrack">Made by Discord: edward_sukuna</string>
+    <string name="appearances">Appearances</string>
+    <string name="last_seen">Last seen</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_loot_icon">Loot icon</string>
+    <string name="cd_faction_icon">Faction</string>
+    <string name="cd_app_icon">Escalation Loot</string>
+</resources>

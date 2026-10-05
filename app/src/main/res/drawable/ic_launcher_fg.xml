@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Launcher foreground: target reticle mark. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- crosshair ring -->
+    <path
+        android:strokeColor="#FFB300"
+        android:strokeWidth="3.5"
+        android:fillColor="#00000000"
+        android:pathData="M54,32 A22,22 0 1,1 53.9,32 Z" />
+
+    <!-- centre dot -->
+    <path
+        android:fillColor="#FF6D00"
+        android:pathData="M54,47 A7,7 0 1,1 53.9,47 Z" />
+
+    <!-- tick marks -->
+    <path android:fillColor="#FFB300" android:pathData="M52.5,24h3v9h-3z" />
+    <path android:fillColor="#FFB300" android:pathData="M52.5,75h3v9h-3z" />
+    <path android:fillColor="#FFB300" android:pathData="M24,52.5h9v3h-9z" />
+    <path android:fillColor="#FFB300" android:pathData="M75,52.5h9v3h-9z" />
+</vector>

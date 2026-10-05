@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Primary refresh button: amber pill. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="#55FFFFFF">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="0"
+                android:startColor="@color/brand_amber"
+                android:endColor="@color/brand_orange"
+                android:type="linear" />
+            <corners android:radius="22dp" />
+        </shape>
+    </item>
+</ripple>
