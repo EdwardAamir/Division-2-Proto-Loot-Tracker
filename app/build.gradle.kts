@@ -13,6 +13,26 @@ android { namespace = "com.edward.escalationloot"; compileSdk = 35
     defaultConfig { applicationId = "com.edward.escalationloot"; minSdk = 29; targetSdk = 35; versionCode = 1; versionName = "1.0" }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
 
+    // Strip build-tooling files that ship inside kotlin-stdlib's JAR.
+    //
+    // kotlin-tooling-metadata.json describes the IDE that compiled the
+    // standard library; DebugProbesKt.bin is a coroutines debug facility. Both
+    // are dead weight in a shipped app, and neither is ever read at runtime.
+    // They do not affect Play Protect either way, but a public APK should not
+    // carry IDE bookkeeping.
+    packaging {
+        resources {
+            // META-INF/*.kotlin_module is deliberately NOT excluded: it is
+            // consumed by kotlin-reflect at runtime, and losing it turns into a
+            // NoClassDefFoundError rather than a clean failure.
+            excludes += setOf(
+                "kotlin-tooling-metadata.json",
+                "**/DebugProbesKt.bin",
+                "DebugProbesKt.bin"
+            )
+        }
+    }
+
     // Release, not debug, so the package is not android:debuggable. Xiaomi/MIUI's
     // security scan blocks debuggable APKs with "App blocked to protect your
     // device" and refuses to install them outright.
