@@ -1,3 +1,7 @@
+# Personal notes for filling in the GitHub repo/release fields. Not project
+# source, so it stays out of the public repo.
+REPO_DESCRIPTION.md
+
 # ── Secrets ───────────────────────────────────────────────────────────
 # The release signing key and its passwords. Committing these would let
 # anyone build an "update" that Android accepts as this app. Never commit them.
