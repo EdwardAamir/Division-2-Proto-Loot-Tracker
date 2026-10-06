@@ -115,38 +115,15 @@ shasum -a 256 EscalationLoot.apk
 **Android** — install * hash checker* from the Play Store, or check the file
 properties in a file manager.
 
-### Battery optimisation
+### Battery optimisation — do this or the daily refresh will stop
 
 Xiaomi, Samsung, Huawei, Oppo and OnePlus phones aggressively kill background
-apps, which stops the daily refresh and the notification.
+apps, which stops the daily refresh and the notification. If updates stop
+arriving, this is almost always why:
 
 **Settings → Apps → Escalation Loot → Battery → Unrestricted**
 
 or **Settings → Battery → App battery saver → Escalation Loot → No restrictions**
-
-### After installing: let notifications through
-
-Xiaomi, Samsung, Huawei and OnePlus phones aggressively kill background apps,
-which will stop the daily refresh. If updates stop arriving:
-
-**Settings → Apps → Escalation Loot → Battery → Unrestricted**
-
-or **Settings → Battery → App battery saver → Escalation Loot → No restrictions**
-
----
-
-## How the countdown works
-
-ProtoTrack resets at **08:00 UTC**, which is **1:00 PM in Pakistan**. That is one
-moment in time, so:
-
-- **The countdown number is the same for everyone.** It is a duration — the gap
-  between now and that moment — so a user in China sees the same `22h 43m` you do.
-- **The clock time next to it is localised.** A user in China sees `4:00 PM CST`
-  while you see `1:00 PM PKT`, because China is three hours ahead.
-
-Verified across 13 timezones, including half-hour (`Asia/Kathmandu`, `+5:45`) and
-daylight-saving zones.
 
 ---
 
@@ -170,37 +147,12 @@ override current data.
 Requires **JDK 17** and the **Android SDK** (platform 35). Android Studio works.
 
 ```bash
-git clone https://github.com/edward_sukuna/escalation-loot.git
-cd escalation-loot
+git clone https://github.com/EdwardAamir/Division-2-Proto-Loot-Tracker.git
+cd Division-2-Proto-Loot-Tracker
 ./gradlew assembleRelease
 ```
 
 Output: `app/build/outputs/apk/release/`
-
-### Signing
-
-The release key is **not** in this repo, on purpose — if it were, anyone could
-build an "update" that Android would accept as the real app.
-
-To produce an installable signed APK, create `keystore.properties` in the project
-root:
-
-```properties
-storeFile=/path/to/your/release.jks
-storePassword=yourpassword
-keyAlias=youralias
-keyPassword=yourpassword
-```
-
-Or set `ESCALATION_KEYSTORE`, `ESCALATION_KEYSTORE_PASSWORD`,
-`ESCALATION_KEY_ALIAS` and `ESCALATION_KEY_PASSWORD` in the environment.
-
-Without either, the release build still succeeds and produces an **unsigned**
-APK. That is intentional so anyone can compile and run the app without secrets.
-
-`keystore.properties` is gitignored. Keep your key backed up somewhere safe and
-private: if you lose it, you cannot ship an update to existing installs, because
-Android rejects updates signed by a different key.
 
 ---
 
@@ -211,7 +163,7 @@ Android rejects updates signed by a different key.
 | Loot looks like yesterday's | ProtoTrack has not updated yet. Pull to refresh. |
 | "ProtoTrack is down" | ProtoTrack itself is failing, not your connection. This has happened before. |
 | "No connection · showing saved data" | Your device is offline. The app is showing your last known loot. |
-| Notifications stopped | Battery optimiser killed the app. See [After installing](#after-installing-let-notifications-through). |
+| Notifications stopped | Battery optimiser killed the app. See [Battery optimisation](#battery-optimisation--do-this-or-the-daily-refresh-will-stop). |
 | Countdown looks wrong | Check Settings → Date & time → Time zone is set automatically. |
 
 ---
@@ -220,7 +172,7 @@ Android rejects updates signed by a different key.
 
 - Loot data and gear images from [prototrack.gg](https://prototrack.gg/target-loot/target-loot.php)
 - The Division 2 is a trademark of **Ubisoft Entertainment**
-- Built by **[edward_sukuna](https://edward_sukuna)** — Discord
+- Built by **edward_sukuna** — Discord
 - Built with help from **OpenCode**
 
 This is an unofficial fan project. It is not affiliated with or endorsed by
