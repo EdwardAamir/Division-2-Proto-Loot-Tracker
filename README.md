@@ -13,6 +13,13 @@ daily right after the reset.
 - Works out the reset time in **your** timezone, not a hardcoded one
 - No account, no PC, no VPS — nothing to set up after install
 
+## 📸 Screenshots
+
+<div align="center">
+  <img src="screenshots/english_ui.png" width="300" alt="English Interface">
+  <img src="screenshots/chinese_ui.png" width="300" alt="Chinese Interface">
+</div>
+
 ---
 
 ## 📥 Download
@@ -173,7 +180,6 @@ Output: `app/build/outputs/apk/release/`
 - Loot data and gear images from [prototrack.gg](https://prototrack.gg/target-loot/target-loot.php)
 - The Division 2 is a trademark of **Ubisoft Entertainment**
 - Built by **edward_sukuna** — Discord
-- Built with help from **OpenCode**
 
 This is an unofficial fan project. It is not affiliated with or endorsed by
 ProtoTrack or Ubisoft. Please respect ProtoTrack's terms of use and rate limits
