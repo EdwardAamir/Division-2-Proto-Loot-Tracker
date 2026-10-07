@@ -12,6 +12,21 @@ daily right after the reset.
 - Notification when the loot date changes
 - Works out the reset time in **your** timezone, not a hardcoded one
 - No account, no PC, no VPS — nothing to set up after install
+- **Also available as a web page** — no install needed
+
+## 🌐 Web version — no install needed
+
+Not ready to trust a sideloaded app? The same app runs in any browser, so people
+can just open a link instead of installing anything:
+
+**👉 https://EdwardAamir.github.io/Division-2-Proto-Loot-Tracker/**
+
+Works on Android, iPhone, PC — anything with a browser. Nothing to download,
+nothing to install, no permissions to grant. It mirrors the app: auto-refreshes
+on open, counts down to the exact 08:00 UTC reset, shows the live loot with gear
+art, and keeps the same footer and credits. Source is in [`web/`](web/), MIT
+licensed like everything else. (The link goes live once GitHub Pages is enabled
+for this repo — see the release announcement for the URL.)
 
 ## 📸 Screenshots
 
@@ -146,6 +161,13 @@ Loot data is read from ProtoTrack's JSON feed, which is the same source their
 Discord bot uses. The HTML page is only used to add faction icons and loot
 history, and only when it reports the same date — so a stale page can never
 override current data.
+
+**How the web version reads the same data:** browsers cannot fetch ProtoTrack
+directly because their server sends no CORS headers, so `web/data.json` holds a
+snapshot that GitHub Actions refreshes every few minutes around the 08:00 UTC
+reset. The page always shows that snapshot first and labels it transparently,
+then upgrades to live data when a fetch path succeeds. It never shows
+yesterday's loot labelled as today's.
 
 ---
 

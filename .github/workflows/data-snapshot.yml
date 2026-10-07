@@ -1,0 +1,59 @@
+name: Snapshot ProtoTrack loot feed
+
+on:
+  schedule:
+    # Dense coverage around the 08:00 UTC reset, so the web page's snapshot is
+    # only ever minutes behind. Every run also deploys the site, so the fresh
+    # snapshot is live immediately (a GITHUB_TOKEN push would not re-trigger
+    # the Pages workflow — see README for how the snapshot path works).
+    - cron: '*/5 8-9 * * *'   # every 5 min through the rollover window
+    - cron: '15 12 * * *'     # once more before the 1 PM PKT notice hour
+    - cron: '0 18 * * *'      # evening safety net
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch target-loot.json
+        run: |
+          curl -sS --max-time 30 -o web/data.json \
+            https://prototrack.gg/target-loot/target-loot.json
+          python -c "import json;json.load(open('web/data.json'))"
+          echo "snapshot fetched and valid"
+
+      - name: Commit if changed
+        run: |
+          git config user.name "loot-snapshot[bot]"
+          git config user.email "escalation-loot@users.noreply.github.com"
+          git add web/data.json
+          if git diff --cached --quiet; then
+            echo "no change — nothing to commit"
+          else
+            git commit -m "chore(web): refresh ProtoTrack loot snapshot"
+            git push
+            echo "snapshot pushed"
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+      - name: Deploy
+        uses: actions/deploy-pages@v4
