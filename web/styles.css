@@ -37,6 +37,37 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ── Division 2 "DC at dusk" backdrop (painted by web/bg.js) ── */
+#bgScene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3;
+  pointer-events: none;
+}
+
+/* Keeps cards/header/footer readable over the sky while it stays visible. */
+.bg-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(130% 100% at 50% 100%,
+      rgba(8, 11, 18, 0.62) 0%,
+      rgba(8, 11, 18, 0.30) 55%,
+      rgba(8, 11, 18, 0.55) 100%),
+    linear-gradient(180deg,
+      rgba(8, 11, 18, 0.52) 0%,
+      rgba(8, 11, 18, 0.18) 45%,
+      rgba(8, 11, 18, 0.52) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #bgScene { animation: none; }
+}
+
 .app {
   max-width: 1060px;
   margin: 0 auto;
