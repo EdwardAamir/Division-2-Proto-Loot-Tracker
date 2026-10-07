@@ -19,14 +19,15 @@ daily right after the reset.
 Not ready to trust a sideloaded app? The same app runs in any browser, so people
 can just open a link instead of installing anything:
 
-**👉 https://EdwardAamir.github.io/Division-2-Proto-Loot-Tracker/**
+**👉 https://div2boost.com/**
 
 Works on Android, iPhone, PC — anything with a browser. Nothing to download,
 nothing to install, no permissions to grant. It mirrors the app: auto-refreshes
 on open, counts down to the exact 08:00 UTC reset, shows the live loot with gear
 art, and keeps the same footer and credits. Source is in [`web/`](web/), MIT
-licensed like everything else. (The link goes live once GitHub Pages is enabled
-for this repo — see the release announcement for the URL.)
+licensed like everything else. (While the DNS switch propagates, the site is
+also reachable at the old address:
+https://EdwardAamir.github.io/Division-2-Proto-Loot-Tracker/.)
 
 ## 📸 Screenshots
 
