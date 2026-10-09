@@ -29,10 +29,22 @@ jobs:
 
       - name: Fetch target-loot.json
         run: |
-          curl -sS --max-time 30 -o web/data.json \
-            https://prototrack.gg/target-loot/target-loot.json
-          python -c "import json;json.load(open('web/data.json'))"
-          echo "snapshot fetched and valid"
+          HTTP_CODE=$(curl -sS --max-time 30 -w "%{http_code}" -o web/data.json \
+            https://prototrack.gg/target-loot/target-loot.json)
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "⚠️  API returned HTTP $HTTP_CODE - keeping existing data.json"
+            git checkout web/data.json || echo "No existing data.json to restore"
+            exit 0
+          fi
+
+          if ! python -c "import json;json.load(open('web/data.json'))" 2>/dev/null; then
+            echo "⚠️  Invalid JSON received - keeping existing data.json"
+            git checkout web/data.json || echo "No existing data.json to restore"
+            exit 0
+          fi
+
+          echo "✓ snapshot fetched and valid"
 
       - name: Commit if changed
         run: |
